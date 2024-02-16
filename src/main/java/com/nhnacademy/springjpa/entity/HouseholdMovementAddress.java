@@ -14,11 +14,17 @@ public class HouseholdMovementAddress {
     @EmbeddedId
     private Pk pk;
 
-    private int householdSerialNumber;
+    @OneToOne
+    @MapsId("householdSerialNumber")
+    @JoinColumn(name = "household_serial_number")
+    private Household household;
+
     @Temporal(TemporalType.DATE)
     private Calendar houseMovementReportDate;
+
     @Column(name = "house_movement_address")
     private String houseMovementAddress;
+
     @Column(name = "last_address_yn")
     private String lastAddressYn;
 

@@ -14,13 +14,23 @@ public class HouseholdCompositionResident {
     @EmbeddedId
     private Pk pk;
 
-    private int householdSerialNumber;
-    private int residentSerialNumber;
+    @MapsId("householdSerialNumber")
+    @ManyToOne
+    @JoinColumn(name = "household_serial_number")
+    private Household household;
+
+    @MapsId("residentSerialNumber")
+    @ManyToOne
+    @JoinColumn(name = "resident_serial_number")
+    private Resident resident;
+
     @Column(name = "report_date")
     @Temporal(TemporalType.DATE)
     private Calendar reportDate;
+
     @Column(name = "household_relationship_code")
     private String householdRelationshipCode;
+
     @Column(name = "household_composition_change_reason_code")
     private String householdCompositionChangeReasonCode;
 
