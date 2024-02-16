@@ -1,10 +1,17 @@
-package com.nhnacademy.springjpa.entity;
+package com.nhnacademy.springjpa.domain.entity;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
 @Table(name = "certificate_issue")
+@Getter
+@Setter
+@NoArgsConstructor
 public class CertificateIssue {
     @Id
     @Column(name = "certificate_confirmation_number")

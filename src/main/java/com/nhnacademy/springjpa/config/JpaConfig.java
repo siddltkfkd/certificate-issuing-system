@@ -11,7 +11,6 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -20,15 +19,14 @@ import java.util.Properties;
 @Configuration
 public class JpaConfig {
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource);
-        emf.setPackagesToScan("com.nhnacadmey.springjpa.entity");
-        emf.setJpaVendorAdapter(JpaVendorAdapters());
+        emf.setPackagesToScan("com.nhnacademy.springjpa.domain.entity");
+        emf.setJpaVendorAdapter(jpaVendorAdapters());
         emf.setJpaProperties(jpaProperties());
         return emf;
     }
-
     private Properties jpaProperties() {
         Properties jpaProperties = new Properties();
         jpaProperties.setProperty("hibernate.show_sql", "false");
@@ -39,14 +37,14 @@ public class JpaConfig {
         return jpaProperties;
     }
 
-    private JpaVendorAdapter JpaVendorAdapters() {
+    private JpaVendorAdapter jpaVendorAdapters() {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
         hibernateJpaVendorAdapter.setDatabase(Database.H2);
         return hibernateJpaVendorAdapter;
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager (EntityManagerFactory entityManagerFactory) {
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;

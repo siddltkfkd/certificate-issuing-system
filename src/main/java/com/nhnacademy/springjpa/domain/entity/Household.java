@@ -1,10 +1,17 @@
-package com.nhnacademy.springjpa.entity;
+package com.nhnacademy.springjpa.domain.entity;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
 @Table(name = "household")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Household {
     @Id
     @Column(name = "household_serial_number")

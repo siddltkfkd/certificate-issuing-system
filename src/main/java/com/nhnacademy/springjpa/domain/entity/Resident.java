@@ -1,10 +1,17 @@
-package com.nhnacademy.springjpa.entity;
+package com.nhnacademy.springjpa.domain.entity;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
 @Table(name = "resident")
+@NoArgsConstructor
+@Getter
+@Setter
 public class Resident {
     @Id
     @Column(name = "resident_serial_number")
@@ -26,7 +33,7 @@ public class Resident {
     private String birthPlaceCode;
 
     @Column(name = "registration_base_address")
-    private String registrationBaseAdddress;
+    private String registrationBaseAddress;
 
     @Column(name = "death_date")
     @Temporal(TemporalType.TIMESTAMP)

@@ -1,14 +1,15 @@
-package com.nhnacademy.springjpa.entity;
+package com.nhnacademy.springjpa.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "family_relationship")
+@Getter
+@Setter
+@NoArgsConstructor
 public class FamilyRelationship {
     @EmbeddedId
     private Pk pk;
@@ -27,8 +28,9 @@ public class FamilyRelationship {
     @AllArgsConstructor
     @EqualsAndHashCode
     @Embeddable
+    @Getter
+    @Setter
     public static class Pk implements Serializable{
-        @Column(name = "base_resident_serial_number")
         private int baseResidentSerialNumber;
         @Column(name = "family_resident_serial_number")
         private int familyResidentSerialNumber;

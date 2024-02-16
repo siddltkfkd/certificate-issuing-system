@@ -1,8 +1,6 @@
-package com.nhnacademy.springjpa.entity;
+package com.nhnacademy.springjpa.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +8,9 @@ import java.util.Calendar;
 
 @Entity
 @Table(name = "household_movement_address")
+@Getter
+@Setter
+@NoArgsConstructor
 public class HouseholdMovementAddress {
     @EmbeddedId
     private Pk pk;
@@ -32,8 +33,9 @@ public class HouseholdMovementAddress {
     @AllArgsConstructor
     @EqualsAndHashCode
     @Embeddable
+    @Getter
+    @Setter
     public static class Pk implements Serializable {
-        @Column(name = "household_serial_number")
         private int householdSerialNumber;
         @Column(name = "house_movement_report_date")
         private Calendar houseMovementReportDate;
